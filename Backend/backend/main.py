@@ -8,12 +8,13 @@ from dotenv import load_dotenv,find_dotenv
 #load the .env file
 load_dotenv(find_dotenv())
 client=OpenAI(
-    api_key=os.environ.get('OPENAI_API_KEY'),
+    base_url="https://models.inference.ai.azure.com",
+    api_key=os.environ.get('GITHUB_TOKEN'),
 )
 
-model = "gpt-4-turbo-preview"
-temperature = 0.3
-max_tokens = 500
+model = "gpt-4o"
+temperature = 1
+max_tokens = 4096
 topic = ""
 
 book = ""
@@ -22,8 +23,8 @@ book = ""
 # prompt = prompts.generate_prompt (book, topic)
 
 messages = [
-    {"role":"system","content": "You are a smart youtuber who makes free indie game shorts from itch."},
-    {"role":"user","content": "list 5 game names from itch with links that you would post to get views."}
+    {"role":"system","content": "You are an HR Hiring Manager at a renowed Tech Company. You have years of experience under your belt reviewing the cover letters of thousands of applicants"},
+    {"role":"user","content": "Give me 2 basic templates for a cover letter"}
 ]
 def get_reply():
     completion= client.chat.completions.create(
