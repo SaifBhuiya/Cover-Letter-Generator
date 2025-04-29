@@ -69,6 +69,11 @@ function App() {
         setTemplateVisible(false)
         setTempChosenData(template)
     }
+    function close_result() {
+        setIsTempChosen(false)
+        setTemplateVisible(false)
+
+    }
 
     return (
         <div className="App">
@@ -94,14 +99,14 @@ function App() {
                 </div>
 
             </section>
-            
+
             {(templateVisible || istempChosen) && (<hr></hr>)}
 
             {
                 templateVisible && (
-                   
+
                     <section id="template_section">
-                       
+
                         <div className="template">
 
                             <label>Template 1</label>
@@ -129,25 +134,27 @@ function App() {
             {
                 istempChosen && (
                     <section id="final_Cover_Letter">
-                      
+
                         <div className="template">
 
                             <label>Selected Cover Letter Template</label>
                             <textarea id="final_CL" className="template_display" value={tempChosenData} placeholder="Selected Template" onChange={(e) => setTempChosenData(e.target.value)} ></textarea>
                         </div>
                         <div id="action_buttons">
-                            <button onClick={() => setIsTempChosen(false)}>
-                                Delete
-                            </button>
+
                         </div>
 
 
                     </section>)
             }
+            {(templateVisible || istempChosen) && (
+                <button onClick={() => close_result()}>
+                Close
+            </button>)}
 
             {isLoading && <div className="spinner"></div>}
 
-       
+
 
 
 
