@@ -28,7 +28,7 @@ function App() {
     //Returns data as dictionary containing 2 separate templates
     const handleSubmit = () => {
         setIsLoading(true)
-        fetch('https://cover-letter-generator-production-9df6.up.railway.app/send_text', {
+        fetch('https://athletic-illumination-production.up.railway.app/send_text', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
