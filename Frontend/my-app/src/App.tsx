@@ -5,16 +5,27 @@ import { useState } from 'react';
 
 function App() {
 
+    //holds pasted job_desc and resume
     const [descInput, setDescInput] = useState<string>('');
     const [resumeInput, setResumeInput] = useState<string>('');
+
+    //holds reply from AI (2 templates)
     const [template1, setTemplate1] = useState<string>('');
     const [template2, setTemplate2] = useState<string>('');
+
+    //used control which UI element is visible
     const [templateVisible, setTemplateVisible] = useState<boolean>(false)
     const [istempChosen, setIsTempChosen] = useState<boolean>(false)
+
+    //Selected template data (string)
     const [tempChosenData, setTempChosenData] = useState<string>('');
+
+    //loading indicator when waiting for AI reply
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
 
+    //Sends JOB_DESC and RESUME to backend. 
+    //Returns data as dictionary containing 2 separate templates
     const handleSubmit = () => {
         setIsLoading(true)
         fetch('http://127.0.0.1:8000/send_text', {
@@ -36,7 +47,7 @@ function App() {
             .finally(() => setIsLoading(false));
     };
 
-
+    //checks if both fields are filled. If yes then sends data to backend else show alert
     function generate_CL() {
         if (descInput !== '' && resumeInput !== '') {
             handleSubmit()
@@ -46,11 +57,13 @@ function App() {
         }
 
     }
+    //clear form input field
     function clear_Input() {
         setDescInput("")
         setResumeInput("")
     }
 
+    //called when a template is selected to store that template data
     function selected_Template(template: string) {
         setIsTempChosen(true)
         setTemplateVisible(false)
@@ -81,7 +94,7 @@ function App() {
                 </div>
 
             </section>
-
+            
             {(templateVisible || istempChosen) && (<hr></hr>)}
 
             {
