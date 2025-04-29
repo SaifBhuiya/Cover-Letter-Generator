@@ -28,7 +28,7 @@ function App() {
     //Returns data as dictionary containing 2 separate templates
     const handleSubmit = () => {
         setIsLoading(true)
-        fetch('http://127.0.0.1:8000/send_text', {
+        fetch('https://cover-letter-generator-production-9df6.up.railway.app/send_text', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
