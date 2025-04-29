@@ -4,6 +4,28 @@
     color: #8d8bee;
 }
 
+label {
+    margin: 10px;
+    font-weight: 600;
+}
+
+button {
+    background-color: #8B5CF6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin: 20px;
+}
+
+    button:hover {
+        background-color: #1a0d1c;
+    }
+
+
 header {
     width: 100vw;
     height: 15vh;
@@ -15,7 +37,7 @@ header {
     font-weight: 1000;
 }
 
-section{
+#input_section{
     margin:10px;
     display:flex;
     flex-direction:column;
@@ -23,10 +45,7 @@ section{
     align-items:center;
     
 }
-label {
-    margin: 10px;
-    font-weight: 600;
-}
+
 #Job_Desc_Input {
     background-color: #1c1523;
     color: white;
@@ -40,30 +59,99 @@ label {
     outline: 3px solid;
     outline-color: #8d8bee;
     box-sizing: border-box;
+    transition: background-color 0.2s;
 }
+
+    #Job_Desc_Input:hover {
+        background-color: rgba(28,21,35,.6);
+    }
 
 #Resume_Input {
     background-color: #1c1523;
     color: white;
     width: 80vw;
     height: 30vh;
-    align-items: center;
-    box-sizing: border-box;
+    resize: none;
+    overflow-y: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    /*align-items: center;*/
     padding: 2vw;
     outline: 3px solid;
     outline-color: #8d8bee;
-}
-button {
-    background-color: #8B5CF6;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
+    box-sizing: border-box;
     transition: background-color 0.2s;
-    margin:20px;
 }
-    button:hover {
-        background-color: #1a0d1c;
+
+    #Resume_Input:hover {
+        background-color: rgba(28,21,35,.6);
     }
+
+#template_section {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#action_buttons {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.template {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.template_display {
+    background-color: rgba(28,21,35,.9);
+    color: rgba(255,255,255,.8);
+    width: 40vw;
+    height: 90vh;
+    resize: none;
+    overflow-y: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    padding: 2vw;
+    outline: 3px solid;
+    outline-color: #8d8bee;
+    box-sizing: border-box;
+}
+#final_CL {
+    width: 80vw;
+    height: 80vh;
+    transition: background-color 0.2s;
+}
+
+    #final_CL:hover {
+        background-color: rgba(15,15,16,1);
+        color: rgba(255,255,255,1);
+    }
+
+
+
+
+.spinner {
+    border: 7px solid rgba(0,0,0,0.3);
+    position: fixed;
+    border-left-color: #8d8bee;
+    border-radius: 50%;
+    bottom: 15px; 
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    /*margin: 10px auto;*/
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -27,13 +27,14 @@ Instructions:
 - Use a formal, confident, and enthusiastic tone.
 - Ensure that the structure includes a professional greeting, an engaging introduction, a detailed body section focusing on skills and experiences, and a polite and strong closing statement.
 - Make sure the two versions are distinct in terms of writing style, wording, or structure while both being suitable for job applications.
+- The cover letter should include the candidate's name, address, email, and phone number as found in the resume (if provided).
+- If any field such as the name is missing, generate a placeholder and ensure that it is filled in correctly in the output.
 - Keep each Cover Letter concise (preferably between 250 to 350 words).
 - Avoid generic phrases; focus on personalization based on the job description.
 - If possible, incorporate keywords from the Job Description naturally into the content.
 
 Format the output clearly:
 - Start each Cover Letter with **Cover Letter 1:** and **Cover Letter 2:** labels.
-- Separate the two versions with a blank line.
 
 Begin when ready.
 """

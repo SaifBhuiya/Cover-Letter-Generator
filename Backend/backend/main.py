@@ -33,10 +33,23 @@ def model_reply(job_Desc, resume):
         return completion.choices[0].message.content
     except Exception as e:
         print(f"Error generating reply: {e}")
-        return "Error generating cover letter."
+        return f"{e}"
 
 
+def split_templates(cover_letter):
+    if "**Cover Letter 2:**" in cover_letter:
+        parts = cover_letter.split("**Cover Letter 2:**")
+        cover_letter_1 = parts[0].strip().replace("**Cover Letter 1:**", "").strip()
+        cover_letter_2 = parts[1].strip()
+    else:
+        # fallback if the expected structure is not found
+        cover_letter_1 = cover_letter
+        cover_letter_2 = ""
 
+    return {
+        "cover_letter_1": cover_letter_1,
+        "cover_letter_2": cover_letter_2
+    }
 
 
 
@@ -51,7 +64,7 @@ origins=[
 # Adding CORS middleware to allow requests from any origin (for development purposes)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # You can replace "*" with specific domains in production
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],  # Allows all headers
@@ -66,12 +79,13 @@ class InputData(BaseModel):
 async def receive_text(data: InputData):
     job_Desc = data.job_desc
     resume = data.resume
+    #reply from AI stored in cover_letters
+    #sends 2 templates together
+    cover_letters = model_reply(job_Desc,resume)
 
-    print(model_reply(job_Desc,resume))
-    return {
-        "job_description_received": data.job_desc,
-        "resume_received": data.resume
-    }
+    #split the templates and store them in a dictionary to return to React
+    return split_templates(cover_letters)
+
 
 
 #command to start backend
