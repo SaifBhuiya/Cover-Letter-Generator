@@ -140,17 +140,21 @@ function App() {
                             <label>Selected Cover Letter Template</label>
                             <textarea id="final_CL" className="template_display" value={tempChosenData} placeholder="Selected Template" onChange={(e) => setTempChosenData(e.target.value)} ></textarea>
                         </div>
-                        <div id="action_buttons">
 
-                        </div>
+
+
 
 
                     </section>)
             }
             {(templateVisible || istempChosen) && (
-                <button onClick={() => close_result()}>
-                Close
-            </button>)}
+                <div id="action_buttons">
+                    <button onClick={() => close_result()}>
+                        Close
+                    </button>
+                </div>
+            )
+            }
 
             {isLoading && <div className="spinner"></div>}
 
