@@ -13,9 +13,6 @@ client=OpenAI(
     base_url=OPENAI_BASE_URL,
     api_key=os.environ.get('GITHUB_TOKEN'),
 )
-@app.get("/test_connection")
-async def test_connection():
-    return {"status": "Connection to FastAPI is working!"}
 
 #Function to use LLM Model
 def model_reply(job_Desc, resume):
@@ -77,6 +74,10 @@ class InputData(BaseModel):
     resume: str
 
 # #test connection
+@app.get("/test_connection")
+async def test_connection():
+    return {"status": "Connection to FastAPI is working!"}
+
 @app.post("/send_text")
 async def receive_text(data: InputData):
     job_Desc = data.job_desc
